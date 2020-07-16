@@ -22,9 +22,11 @@ class Lock {
     _isWorking = null;
   }
 
-  Future<T> waitLock<T>(Map values) async {
+  // Todo force all callers to pass the function
+  Future<T> waitLock<T>(Map values, {recallFunction functionToBeCalled}) async {
+    functionToBeCalled ??= _function;
     await _isWorking;
-    return _function<T>(values);
+    return functionToBeCalled<T>(values);
   }
 
   setFunction(recallFunction fun) {

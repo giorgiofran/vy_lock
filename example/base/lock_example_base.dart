@@ -10,7 +10,7 @@ import 'package:vy_lock/vy_lock.dart' show Lock;
 class LockExample {
   /// You can use it easily in more than one method inside your classes.
   /// In this case you need a Locker instance per method.
-  Lock fooLock = new Lock();
+  Lock fooLock = Lock();
 
   /// convenient way of defining a parameter name
   static const String constValue = 'value';
