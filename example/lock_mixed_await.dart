@@ -4,9 +4,10 @@
 import 'base/lock_example_base.dart';
 
 main() async {
-  LockExample lockExample = new LockExample();
+  LockExample lockExample = LockExample();
   int val = await lockExample.foo(5);
   print(val);
+  // ignore: unawaited_futures
   lockExample.foo<int>(7).then((int value) => print(value));
   val = await lockExample.foo(1);
   print(val);

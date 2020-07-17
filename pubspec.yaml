@@ -1,6 +1,6 @@
 name: vy_lock
 description: Simple function for forcing one at a time acces to a method (mutex)
-version: 0.1.1
+version: 0.1.2
 #homepage: https://www.example.com
 author: Giorgio Franceschetti <giorgiofran@gmail.com>
 

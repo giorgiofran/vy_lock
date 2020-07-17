@@ -10,9 +10,10 @@ import 'base/lock_example_base.dart';
 /// If you see the output, the calls with the values of 7, and 1 are
 /// mixed up.
 main() async {
-  WithoutLockExample withoutLockExample = new WithoutLockExample();
+  WithoutLockExample withoutLockExample = WithoutLockExample();
   int val = await withoutLockExample.foo(5);
   print(val);
+  // ignore: unawaited_futures
   withoutLockExample.foo(7).then((int value) => print(value));
   val = await withoutLockExample.foo(1);
   print(val);

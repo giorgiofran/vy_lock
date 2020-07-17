@@ -13,7 +13,7 @@ main() {
 /// You could still use LockManager to prevent errors
 /// (forgetting to use await somewhere) on key methods.
 regularAwait() async {
-  WithoutLockExample withoutLockExample = new WithoutLockExample();
+  WithoutLockExample withoutLockExample = WithoutLockExample();
   int val = await withoutLockExample.foo(5);
   print(val);
   val = await withoutLockExample.foo(7);

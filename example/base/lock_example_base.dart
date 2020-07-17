@@ -24,18 +24,15 @@ class LockExample {
     /// Here we call our function with the parameter received in the
     /// values Map. The values are set in the waitLock call
     /// Ex. fooLock.waitLock({constValue: value})
-    Future<T> _recall<T>(Map values) => foo<T>(values[constValue]);
+    Future<V> _recall<V>(Map values) => foo<V>(values[constValue]);
 
     /// check if the method is already locked, if yes, the waitLock
     /// method is called.
     /// We have to pass the received (foo) parameter into a Map
     /// that will be used by the _recall function
     if (fooLock.locked) {
-      return await fooLock.waitLock<T>({constValue: value});
+      return await fooLock.waitLock<T>(_recall, {constValue: value});
     }
-
-    /// Sets the recall function
-    fooLock.setFunction(_recall);
     // ********** End lock definition area *****************
 
     /// locks the method, everything executed between

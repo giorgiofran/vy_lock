@@ -4,7 +4,7 @@
 import 'base/lock_example_base.dart';
 
 main() {
-  LockExample lockExample = new LockExample();
+  LockExample lockExample = LockExample();
   lockExample.foo<int>(5).then((int value) => print(value));
   lockExample.foo<int>(7).then((int value) => print(value));
   lockExample.foo<int>(1).then((int value) => print(value));

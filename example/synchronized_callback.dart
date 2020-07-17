@@ -3,7 +3,6 @@
 
 import 'base/lock_example_base.dart';
 
-
 /// This is the most common case in which the lock manager can be useful
 /// If you se the output, the calls with the values of 5, 7, 1 and 3 are
 /// all mixed up.

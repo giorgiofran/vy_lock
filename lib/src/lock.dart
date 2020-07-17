@@ -9,7 +9,6 @@ typedef recallFunction = Future<T> Function<T>(Map values); //Function(Map);
 class Lock {
   Future<Null> _isWorking;
   Completer<Null> _completer;
-  recallFunction _function;
   bool get locked => _isWorking != null;
 
   lock() {
@@ -23,13 +22,8 @@ class Lock {
   }
 
   // Todo force all callers to pass the function
-  Future<T> waitLock<T>(Map values, {recallFunction functionToBeCalled}) async {
-    functionToBeCalled ??= _function;
+  Future<T> waitLock<T>(recallFunction functionToBeCalled, Map values) async {
     await _isWorking;
     return functionToBeCalled<T>(values);
-  }
-
-  setFunction(recallFunction fun) {
-    if (_function == null) _function = fun;
   }
 }
