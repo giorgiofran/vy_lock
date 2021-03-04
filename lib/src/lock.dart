@@ -7,17 +7,17 @@ typedef recallFunction = Future<T> Function<T>(Map values); //Function(Map);
 
 @Deprecated('Mutex class is simpler to use')
 class Lock {
-  Future<Null> _isWorking;
-  Completer<Null> _completer;
+  Future<Null>? _isWorking;
+  Completer<Null>? _completer;
   bool get locked => _isWorking != null;
 
-  lock() {
+  void lock() {
     _completer = Completer();
-    _isWorking = _completer.future;
+    _isWorking = _completer!.future;
   }
 
-  unlock() {
-    _completer.complete();
+  void unlock() {
+    _completer?.complete();
     _isWorking = null;
   }
 

@@ -6,8 +6,8 @@ import 'base/lock_example_base.dart';
 /// This is the most common case in which the lock manager can be useful
 /// If you se the output, the calls with the values of 5, 7, 1 and 3 are
 /// all mixed up.
-main() {
-  MutexExample mutexExample = MutexExample();
+void main() {
+  var mutexExample = MutexExample();
   mutexExample.foo(5).then((int value) => print(value));
   mutexExample.foo(7).then((int value) => print(value));
   mutexExample.foo(1).then((int value) => print(value));

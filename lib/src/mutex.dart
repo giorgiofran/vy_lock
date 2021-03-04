@@ -1,12 +1,12 @@
 import 'dart:async';
 
 class Mutex {
-  Completer last;
+  Completer? last;
 
-  mutex(Function fun) async {
-    Completer actual;
+  Future<void> mutex(Function fun) async {
+    Completer? actual;
     try {
-      Completer previous = last;
+      var previous = last;
       actual = Completer();
       last = actual;
 
@@ -18,7 +18,7 @@ class Mutex {
       if (identical(actual, last)) {
         last = null;
       }
-      actual.complete();
+      actual?.complete();
     }
   }
 }

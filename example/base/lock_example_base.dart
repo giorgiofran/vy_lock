@@ -16,7 +16,7 @@ class LockExample {
   static const String constValue = 'value';
 
   /// This is the method that we want to be executed one at a time.
-  Future<T> foo<T>(int value) async {
+  Future<T> foo<T>(T value) async {
     // ********** Start lock definition area *****************
     /// this is the function used to execute again the locked calls.
     /// The name of the function can be anything, it must be declared
@@ -42,7 +42,7 @@ class LockExample {
 
     await foo2(value);
     await foo3(value);
-    T ret = foo5(value);
+    var ret = foo5<T>(value);
 
     /// unlocks the method, new calls to this method can be executed
     fooLock.unlock();
@@ -55,7 +55,7 @@ class WithoutLockExample {
   Future<int> foo(int value) async {
     await foo2(value);
     await foo3(value);
-    int ret = foo5(value);
+    var ret = foo5(value);
 
     return ret;
   }
@@ -64,7 +64,7 @@ class WithoutLockExample {
 class SynchronizedExample {
   final lock = prefix0.Lock();
   Future<int> foo(int value) async {
-    int ret;
+    var ret = -1;
     await lock.synchronized(() async {
       await foo2(value);
       await foo3(value);
@@ -77,7 +77,7 @@ class SynchronizedExample {
 class MutexExample {
   final lock = Mutex();
   Future<int> foo(int value) async {
-    int ret;
+    var ret = -1;
     await lock.mutex(() async {
       await foo2(value);
       await foo3(value);
@@ -87,15 +87,15 @@ class MutexExample {
   }
 }
 
-foo2(int value) async => print('foo2 of $value');
-foo3(int value) async {
+Future<void> foo2<T>(T value) async => print('foo2 of $value');
+Future<void> foo3<T>(T value) async {
   print('foo3 of $value before');
   await foo4(value);
   print('foo3 of $value after');
 }
 
-foo4(int value) async => print('foo4 of $value');
-foo5(int value) {
+Future<void> foo4<T>(T value) async => print('foo4 of $value');
+T foo5<T>(T value) {
   print('foo5 of $value');
   return value;
 }

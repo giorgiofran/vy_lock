@@ -1,11 +1,11 @@
-import "dart:async";
+import 'dart:async';
 
-import "package:test/test.dart";
+import 'package:test/test.dart';
 import '../example/base/lock_example_base.dart';
 
 void main() {
-  test("new Future.value() returns the value", () async {
-    LockExample lockExample = LockExample();
+  test('new Future.value() returns the value', () async {
+    var lockExample = LockExample();
 
     // ignore: unawaited_futures
     lockExample.foo<int>(5).then((int value) => print(value));

@@ -3,7 +3,7 @@
 
 import 'base/lock_example_base.dart';
 
-main() {
+void main() {
   regularAwait();
 }
 
@@ -12,9 +12,9 @@ main() {
 /// If you see the output, the calls are all separated as we were expected.
 /// You could still use LockManager to prevent errors
 /// (forgetting to use await somewhere) on key methods.
-regularAwait() async {
-  WithoutLockExample withoutLockExample = WithoutLockExample();
-  int val = await withoutLockExample.foo(5);
+Future<void> regularAwait() async {
+  var withoutLockExample = WithoutLockExample();
+  var val = await withoutLockExample.foo(5);
   print(val);
   val = await withoutLockExample.foo(7);
   print(val);
