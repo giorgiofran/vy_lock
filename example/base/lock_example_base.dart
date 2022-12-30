@@ -64,7 +64,7 @@ class WithoutLockExample {
 class SynchronizedExample {
   final lock = prefix0.Lock();
   Future<int> foo(int value) async {
-    int ret;
+    int ret = 0;
     await lock.synchronized(() async {
       await foo2(value);
       await foo3(value);
@@ -77,7 +77,7 @@ class SynchronizedExample {
 class MutexExample {
   final lock = Mutex();
   Future<int> foo(int value) async {
-    int ret;
+    int ret = 0;
     await lock.mutex(() async {
       await foo2(value);
       await foo3(value);

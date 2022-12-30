@@ -1,15 +1,14 @@
 import 'dart:async';
 
 class Mutex {
-  Completer last;
+  Completer? last;
 
   mutex(Function fun) async {
-    Completer actual;
-    try {
-      Completer previous = last;
-      actual = Completer();
-      last = actual;
+    Completer actual = Completer();
 
+    Completer? previous = last;
+    last = actual;
+    try {
       if (previous != null) {
         await previous.future;
       }
